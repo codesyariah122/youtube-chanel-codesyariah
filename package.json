@@ -1,0 +1,23 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "puji",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --experimental-json-modules server.js",
+    "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
+    "dev": "concurrently \"yarn start\" \"yarn run client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19",
+    "nodemon": "^2.0.7"
+  }
+}
