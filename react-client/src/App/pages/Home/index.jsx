@@ -6,11 +6,11 @@ const Home = props => {
 
 	const [users, setUsers] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [alerts, setAlerts] = useState(false)
+	const [alert, setAlert] = useState(false)
 	const [details, setDetails] = useState(false)
 	const initialUser = {
 		id: null,
-		usename: '',
+		username: '',
 		email: '',
 		fullname: '',
 		phone: '',
@@ -80,7 +80,7 @@ const Home = props => {
 		.finally(() => {
 			setTimeout(() => {
 				setLoading(true)
-				setAlerts(false)
+				setAlert(false)
 			}, 500)
 		})
 		.then(() => {
@@ -88,7 +88,7 @@ const Home = props => {
 				const delUser = users.filter(user => user.id !== id)
 				setUsers(delUser)
 				setLoading(false)
-				setAlerts(true)
+				setAlert(true)
 			}, 2500)
 		})
 	}
@@ -118,7 +118,7 @@ const Home = props => {
 			</div>
 
 			<div className="col-md-8">
-				<ListData title="List Data User" users={users} loading={loading} detailUser={detailUser} editUser={editUser} deleteUser={deleteUser} alerts={alerts} />
+				<ListData title="List Data User" users={users} loading={loading} detailUser={detailUser} editUser={editUser} deleteUser={deleteUser} alert={alert} setAlert={setAlert} />
 			</div>
 
 			{ details ? (

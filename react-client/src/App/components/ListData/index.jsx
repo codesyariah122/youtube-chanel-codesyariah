@@ -6,10 +6,10 @@ const ListData = props => {
 	return (
 		<Fragment>
 			<h3>{props.title}</h3>
-			{props.alerts ? (
+			{props.alert ? (
 				<div className="alert alert-success alert-dismissible fade show" role="alert">
 				  <strong>Alert!</strong> Delete users success.
-				  <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+				  <button onClick={() => props.setAlert(false)} type="button" className="close" data-dismiss="alert" aria-label="Close">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
@@ -51,7 +51,7 @@ const ListData = props => {
 
 			  	) : (
 			  		<li className="list-group-item text-center">
-			  			<h4 className="text-danger">User Data Not Available</h4>
+			  			<h5 className="text-danger">User Data Not Available</h5>
 			  		</li>
 			  	)}
 

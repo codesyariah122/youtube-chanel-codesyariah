@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
 const AddForm = props => {
-	const initialUser = props.initialUser
+	const initUser = props.initialUser
 
-	const [user, setUser] = useState(initialUser)
+	const [user, setUser] = useState(initUser)
 	const [error, setError] = useState(false)
 	
 	const clearState = () => {
-		setUser({...initialUser})
+		setUser({...initUser})
 	}
 
 	const handleChange = e => {
