@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-const ListData = props => {
+const ListUsers = props => {
 	const users = props.users
 	
 	return (
@@ -36,12 +36,12 @@ const ListData = props => {
 				    		</div>
 
 				    		<div className="col px-md-8">
-				    			<a href="javascript:void(0)" onClick={() => props.detailUser(user.id, user)} data-toggle="modal" data-target="#Modal" className="badge badge-primary">Detail</a>
+				    			<a href="javascript:void(0)" onClick={() => props.DetailUser(user.id, user)} data-toggle="modal" data-target="#Modal" className="badge badge-primary">Detail</a>
 
-				    			<a href="javascript:void(0)" onClick={() => props.editUser(user.id, user)} className="badge badge-info ml-2">Edit
+				    			<a href="javascript:void(0)" onClick={() => props.EditUser(user.id, user)} className="badge badge-info ml-2">Edit
 				    			</a>
 
-				    			<a href="javascript:void(0)" onClick={() => props.deleteUser(user.id)} className="badge badge-danger ml-2">Delete
+				    			<a href="javascript:void(0)" onClick={() => props.DeleteUser(user.id)} className="badge badge-danger ml-2">Delete
 				    			</a>
 				    		</div>
 
@@ -61,4 +61,4 @@ const ListData = props => {
 	)
 }
 
-export default ListData
+export default ListUsers

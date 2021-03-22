@@ -4,10 +4,10 @@ const EditForm = props => {
 
 
 	useEffect(() => {
-		setUser(props.currentUser)
+		setUser(props.detailUser)
 	}, [])
 	
-	const [user, setUser] = useState(props.currentUser)
+	const [user, setUser] = useState(props.detailUser)
 
 	const handleChange = e => {
 		const {name, value} = e.target
@@ -16,7 +16,7 @@ const EditForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if(user) props.updateUser(user)
+		if(user.username) props.UpdateUser(user)
 	}
 
 	return (

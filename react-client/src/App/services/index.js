@@ -55,9 +55,13 @@ export const UpdateData = async(user) => {
 
 
 export const DeleteData = async(id) => {
-	// console.log(id)
-	return await fetch(`http://localhost:8081/api/data/deleted/${id}`, {
-			method: 'DELETE'
-	})
+	try{
+		// console.log(id)
+		return await fetch(`http://localhost:8081/api/data/deleted/${id}`, {
+				method: 'DELETE'
+		})
+	}catch(err){
+		console.log(err)
+	}
 	
 }

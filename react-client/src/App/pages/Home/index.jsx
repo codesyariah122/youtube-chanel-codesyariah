@@ -1,13 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {AllData, AddData, UpdateData, DeleteData} from '../../services'
-import {ListData, Modals, AddForm, EditForm} from '../../components'
+import {ListUsers, Modals, AddForm, EditForm} from '../../components'
 
 const Home = props => {
 
-	const [users, setUsers] = useState([])
-	const [loading, setLoading] = useState(false)
-	const [alert, setAlert] = useState(false)
-	const [details, setDetails] = useState(false)
 	const initialUser = {
 		id: null,
 		username: '',
@@ -18,8 +14,12 @@ const Home = props => {
 		city: '',
 		bio: ''
 	}
+	const [users, setUsers] = useState([])
+	const [loading, setLoading] = useState(false)
+	const [alert, setAlert] = useState(false)
+	const [details, setDetails] = useState(false)
 	const [editing, setEditing] = useState(false)
-	const [currentUser, setCurrentUser] = useState(initialUser)
+	const [detailUser, setdetailUser] = useState(initialUser)
 
 	useEffect(() => {
 		AllData()
@@ -29,7 +29,7 @@ const Home = props => {
 	}, [users])
 
 
-	const addUser = (user) =>{
+	const AddUser = (user) =>{
 		AddData(user)
 		.finally(() => {
 			setTimeout(() => {
@@ -44,19 +44,19 @@ const Home = props => {
 		})
 	}
 
-	const detailUser = (id, user) => {
+	const DetailUser = (id, user) => {
 		setDetails(true)
-		setCurrentUser(user)
+		setdetailUser(user)
 	}
 
-	const editUser = (id, user) => {
+	const EditUser = (id, user) => {
 		setEditing(true)
-		setCurrentUser(user)
+		setdetailUser(user)
 	}
 
-	const updateUser = (newUser) => {
+	const UpdateUser = (newUser) => {
 		setUsers(
-			users.map(user => user.id === currentUser.id ? newUser : user)
+			users.map(user => user.id === detailUser.id ? newUser : user)
 		)
 		// console.log(newUser)
 		UpdateData(newUser)
@@ -68,13 +68,13 @@ const Home = props => {
 		})
 		.then(() => {
 			setTimeout(() => {
-				setCurrentUser(initialUser)
+				setdetailUser(initialUser)
 				setLoading(false)
 			}, 2500)
 		})
 	}
 
-	const deleteUser = id => {
+	const DeleteUser = id => {
 		// console.log(id)
 		DeleteData(id)
 		.finally(() => {
@@ -108,21 +108,21 @@ const Home = props => {
 			<div className="col-md-3 mx-auto">
 			{ editing ? (
 
-				<EditForm title="Edit User" setEditing={setEditing} currentUser={currentUser} updateUser={updateUser}/>
+				<EditForm title="Edit User" setEditing={setEditing} detailUser={detailUser} UpdateUser={UpdateUser}/>
 			) : (
 
-				<AddForm title="Add New User" addUser={addUser} initialUser={initialUser}/>
+				<AddForm title="Add New User" AddUser={AddUser} initialUser={initialUser}/>
 			)
 
 			}
 			</div>
 
 			<div className="col-md-8">
-				<ListData title="List Data User" users={users} loading={loading} detailUser={detailUser} editUser={editUser} deleteUser={deleteUser} alert={alert} setAlert={setAlert} />
+				<ListUsers title="List Data User" users={users} loading={loading} DetailUser={DetailUser} EditUser={EditUser} DeleteUser={DeleteUser} alert={alert} setAlert={setAlert} />
 			</div>
 
 			{ details ? (
-				<Modals title="User Detail" details={details} currentUser={currentUser}/>
+				<Modals title="User Detail" details={details} detailUser={detailUser}/>
 			) : ( 
 				'' 
 			)}

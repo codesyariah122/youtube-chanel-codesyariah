@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import CardUser from './CardUser'
 
 const Modals = props => {
-	const [user, setUser] = useState(props.currentUser)
+	const [user, setUser] = useState('')
 
 	useEffect(() => {
-		setUser(props.currentUser)
-	})
+		setUser(props.detailUser)
+	}, [props.detailUser])
 
 	return (
 		<div className="modal fade" id="Modal" tabIndex="-1">
@@ -18,25 +19,7 @@ const Modals = props => {
 		        </button>
 		      </div>
 		      <div className="modal-body">
-		        <div className="card mb-3">
-					<div className="row no-gutters">
-					    <div className="col-md-4">
-					      <img src="..." alt="..."/>
-					    </div>
-					    <div className="col-md-8">
-					      <div className="card-body">
-					        <h5 className="card-title">{user.username}</h5>
-					        <ul>
-					        	<li>Email : <strong>{user.email}</strong></li>
-					        	<li>Fullname : <strong>{user.fullname}</strong></li>
-					        	<li>Phone : <strong>{user.phone}</strong></li>
-					        	<li>City : <strong>{user.city}</strong></li>
-					        	<li>Bio : <strong>{user.bio}</strong></li>
-					        </ul>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+		        <CardUser user={user} />
 		      </div>
 		      <div className="modal-footer">
 		        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

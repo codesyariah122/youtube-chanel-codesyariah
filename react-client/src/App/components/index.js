@@ -1,6 +1,6 @@
-import ListData from './ListData'
-import Modals from './ListData/Modals'
+import ListUsers from './Lists/ListUsers'
+import Modals from './Lists/Modals'
 import AddForm from './Forms/AddForm'
 import EditForm from './Forms/EditForm'
 
-export {ListData, Modals, AddForm, EditForm}
+export {ListUsers, Modals, AddForm, EditForm}

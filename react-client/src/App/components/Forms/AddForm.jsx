@@ -21,7 +21,7 @@ const AddForm = props => {
 			setError(true)
 		}else{
 			setError(false)
-			props.addUser(user)
+			props.AddUser(user)
 			// handleChange(e, props.addUser(user))
 			clearState()
 		}
