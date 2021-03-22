@@ -1,16 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
 const AddForm = props => {
-	const initialUser = {
-		id: null,
-		username: '',
-		email: '',
-		fullname: '',
-		phone: '',
-		isActive: true,
-		city: '',
-		bio: ''
-	}
+	const initialUser = props.initialUser
 
 	const [user, setUser] = useState(initialUser)
 	const [error, setError] = useState(false)

@@ -6,7 +6,7 @@ const Home = props => {
 
 	const [users, setUsers] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [alert, setAlert] = useState(false)
+	const [alerts, setAlerts] = useState(false)
 	const [details, setDetails] = useState(false)
 	const initialUser = {
 		id: null,
@@ -80,7 +80,7 @@ const Home = props => {
 		.finally(() => {
 			setTimeout(() => {
 				setLoading(true)
-				setAlert(false)
+				setAlerts(false)
 			}, 500)
 		})
 		.then(() => {
@@ -88,7 +88,7 @@ const Home = props => {
 				const delUser = users.filter(user => user.id !== id)
 				setUsers(delUser)
 				setLoading(false)
-				setAlert(true)
+				setAlerts(true)
 			}, 2500)
 		})
 	}
@@ -111,14 +111,14 @@ const Home = props => {
 				<EditForm title="Edit User" setEditing={setEditing} currentUser={currentUser} updateUser={updateUser}/>
 			) : (
 
-				<AddForm title="Add New User" addUser={addUser}/>
+				<AddForm title="Add New User" addUser={addUser} initialUser={initialUser}/>
 			)
 
 			}
 			</div>
 
 			<div className="col-md-8">
-				<ListData title="List Data User" users={users} loading={loading} detailUser={detailUser} editUser={editUser} deleteUser={deleteUser} alert={alert} />
+				<ListData title="List Data User" users={users} loading={loading} detailUser={detailUser} editUser={editUser} deleteUser={deleteUser} alerts={alerts} />
 			</div>
 
 			{ details ? (

@@ -6,7 +6,7 @@ const ListData = props => {
 	return (
 		<Fragment>
 			<h3>{props.title}</h3>
-			{props.alert ? (
+			{props.alerts ? (
 				<div className="alert alert-success alert-dismissible fade show" role="alert">
 				  <strong>Alert!</strong> Delete users success.
 				  <button type="button" className="close" data-dismiss="alert" aria-label="Close">
@@ -36,12 +36,12 @@ const ListData = props => {
 				    		</div>
 
 				    		<div className="col px-md-8">
-				    			<a href="#" onClick={() => props.detailUser(user.id, user)} data-toggle="modal" data-target="#Modal" className="badge badge-primary">Detail</a>
+				    			<a href="javascript:void(0)" onClick={() => props.detailUser(user.id, user)} data-toggle="modal" data-target="#Modal" className="badge badge-primary">Detail</a>
 
-				    			<a href="#" onClick={() => props.editUser(user.id, user)} className="badge badge-info ml-2">Edit
+				    			<a href="javascript:void(0)" onClick={() => props.editUser(user.id, user)} className="badge badge-info ml-2">Edit
 				    			</a>
 
-				    			<a href="#" onClick={() => props.deleteUser(user.id)} className="badge badge-danger ml-2">Delete
+				    			<a href="javascript:void(0)" onClick={() => props.deleteUser(user.id)} className="badge badge-danger ml-2">Delete
 				    			</a>
 				    		</div>
 
