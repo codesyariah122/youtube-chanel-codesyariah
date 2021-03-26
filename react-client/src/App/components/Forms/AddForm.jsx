@@ -4,7 +4,6 @@ const AddForm = props => {
 	const initUser = props.initialUser
 
 	const [user, setUser] = useState(initUser)
-	const [error, setError] = useState(false)
 	
 	const clearState = () => {
 		setUser({...initUser})
@@ -17,22 +16,24 @@ const AddForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if(user.username == ''){
-			setError(true)
-		}else{
-			setError(false)
-			props.AddUser(user)
-			// handleChange(e, props.addUser(user))
-			clearState()
-		}
+		props.AddUser(user)
+		clearState()
+		// if(user.username == ''){
+		// 	setError(true)
+		// }else{
+		// 	setError(false)
+		// 	props.AddUser(user)
+		// 	// handleChange(e, props.addUser(user))
+		// 	clearState()
+		// }
 	}
 
 	return (
 		<Fragment>
 			<h3>{props.title}</h3>
-			{error ? (
+			{props.error ? (
 				<div className="alert alert-warning alert-dismissible fade show" role="alert">
-				  <strong>Alert!</strong> Harap isi form user dengan benar dan sesuai.
+				  <strong>Alert!</strong> {props.error}
 				  <button type="button" className="close" data-dismiss="alert" aria-label="Close">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
@@ -49,7 +50,7 @@ const AddForm = props => {
 
 				<div className="form-group">
 				    <label for="email">Email address</label>
-				    <input type="email" className="form-control" id="email" value={user.email} name="email" onChange={handleChange}/>
+				    <input type="text" className="form-control" id="email" value={user.email} name="email" onChange={handleChange}/>
 				</div>
 
 				<div className="form-group">

@@ -17,6 +17,7 @@ const Home = props => {
 	const [users, setUsers] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [alert, setAlert] = useState(false)
+	const [error, setError] = useState(null)
 	const [details, setDetails] = useState(false)
 	const [editing, setEditing] = useState(false)
 	const [detailUser, setdetailUser] = useState(initialUser)
@@ -36,11 +37,17 @@ const Home = props => {
 				setLoading(true)
 			}, 500)
 		})
-		.then(() => {
+
+		.then(res => {
+			console.log(res)
 			setTimeout(() => {
 				setUsers([...users, user])
+				setError(res.message)
 				setLoading(false)
-			}, 2500)
+			}, 1000)
+		})
+		.catch(err => {
+			console.log(err)
 		})
 	}
 
@@ -111,7 +118,7 @@ const Home = props => {
 				<EditForm title="Edit User" setEditing={setEditing} detailUser={detailUser} UpdateUser={UpdateUser}/>
 			) : (
 
-				<AddForm title="Add New User" AddUser={AddUser} initialUser={initialUser}/>
+				<AddForm title="Add New User" AddUser={AddUser} initialUser={initialUser} error={error}/>
 			)
 
 			}

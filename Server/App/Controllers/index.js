@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
+import validator from 'validator'
 import {UserData} from '../Models/index.js'
+import {handleValidationError} from './validators.js'
 
 export const getAllData = async(req, res) => {
 	try{
@@ -56,11 +58,16 @@ export const createUser = async(req, res) => {
 	const userData = req.body
 	try{
 		const users = new UserData(userData)
+
 		await users.save()
 		res.status(200).json({
 			data: users
 		})
 	}catch(err){
+		console.log(err.message)
+		// if(err.name === "ValidationError"){
+		// 	handleValidationError(err, res)
+		// }
 		res.status(404).json({
 			message: err.message
 		})

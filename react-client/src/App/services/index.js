@@ -24,9 +24,9 @@ export const AddData = async(user) => {
 				city: user.city,
 				bio: user.bio
 			})
-		}).then(res => res.json())
+		}).then(res=>res.json())
 	}catch(err){
-		console.log(err)
+		console.log(err.message)
 	}
 }
 
